@@ -3,5 +3,41 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "n-toolbar-test": {
+      "projectType": "library",
+      "root": "projects/n-toolbar-test",
+      "sourceRoot": "projects/n-toolbar-test/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/n-toolbar-test/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/n-toolbar-test/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/n-toolbar-test/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/n-toolbar-test/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
   }
 }

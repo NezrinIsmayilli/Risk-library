@@ -1,0 +1,56 @@
+<mat-drawer-container class="h-screen">
+    <mat-drawer #drawer>
+      <mat-toolbar [color]="headerColor">
+        <button class="bg-white rounded-full w-10 h-10 text-black flex items-center justify-center mr-5"
+        (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="font-mono mr-3">{{appName}}</span>
+      </mat-toolbar>
+
+      <ng-content select="[menu]"></ng-content>
+    </mat-drawer>
+
+    <mat-drawer-content>
+      <mat-toolbar [color]="headerColor" class="flex justify-between">
+        <div class="flex items-center">
+          <button class="bg-white rounded-full w-10 h-10 text-black flex items-center justify-center mr-5"
+          (click)="drawer.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span class="font-mono cursor-pointer">{{appName}}</span>
+        </div>
+
+        <mat-chip-set>
+          <ng-content select="[header]"></ng-content>
+          <mat-chip  [matMenuTriggerFor]="beforeMenu">
+            <div class="flex items-center justify-between cursor-pointer">
+              <span class="mr-3">Name Surname </span>
+              <mat-icon class="text-blue-500">person</mat-icon>
+            </div>
+          </mat-chip>
+        </mat-chip-set>
+            
+        <mat-menu #beforeMenu="matMenu" xPosition="before" class="position top-2">
+          <button (click)="logout()" class="text-black text-sm px-8 py-3 flex items-center" >
+            <mat-icon class="mr-10">exit_to_app</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+        <ng-content select="[headerMenu]"></ng-content>
+      </mat-toolbar>
+        
+      <div class="min-h-router-outlet">
+        <ng-content></ng-content>
+      </div>
+
+      <mat-toolbar class="flex items-center justify-between text-sm" [style.background-color]="footerColor">
+        <span class="text-white font-semibold">© 1993 - 2023, R.I.S.K. Company - All rights reserved</span>
+        <ng-content select="[footer]"></ng-content>
+        <div class="flex items-center">
+          <img src="../assets/risk_logo.png" alt="risk_logo" class="w-24">
+          <img src="../assets/panda_logo_small.png" alt="panda_logo" class="w-28 mr-3 ml-10">
+        </div>
+      </mat-toolbar>
+    </mat-drawer-content>
+  </mat-drawer-container>
