@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'lib-n-toolbar-test',
-  templateUrl: './n-toolbar-test.component.html'
+  templateUrl: './n-toolbar-test.component.html',
+  styleUrls: ['./n-toolbar-test.component.css', '../../../../dist/n-toolbar-test.tailwind.css']
 })
 export class NToolbarTestComponent {
   showFiller = false;
