@@ -1,29 +1,29 @@
-import { Component, Input } from '@angular/core';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { Component, Input, OnInit } from '@angular/core';
+import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 import { JwksValidationHandler } from 'angular-oauth2-oidc-jwks';
-import { authCodeFlowConfig } from './sso.config';
 import { Router } from '@angular/router';
 
 
 @Component({
   selector: 'lib-n-toolbar-test',
   templateUrl: './n-toolbar-test.component.html',
-  styleUrls: ['./n-toolbar-test.component.css', '../../../../dist/n-toolbar-test.tailwind.css']
+  styleUrls: ['./n-toolbar-test.component.tailwind.css']
 })
-export class NToolbarTestComponent {
+export class NToolbarTestComponent implements OnInit{
   showFiller = false;
   @Input() appName: string;
-  @Input() headerColor: string;
-  @Input() footerColor: string;
+  @Input() authCodeFlowConfig: AuthConfig;
 
   constructor(
       private oauthService: OAuthService,
-      private router: Router){
-      this.configureSingleSignOn();
+      private router: Router){}
+
+  ngOnInit(): void {
+    this.configureSingleSignOn();
   }
 
   configureSingleSignOn() {
-    this.oauthService.configure(authCodeFlowConfig);
+    this.oauthService.configure(this.authCodeFlowConfig);
     this.oauthService.tokenValidationHandler = new JwksValidationHandler();
 
     this.oauthService.loadDiscoveryDocumentAndLogin().then(() => {
