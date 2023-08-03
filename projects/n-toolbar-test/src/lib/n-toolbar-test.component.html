@@ -1,55 +1,63 @@
-<mat-drawer-container class="h-screen">
+<mat-drawer-container class="aran-layout aran-layout-h-screen">
     <mat-drawer #drawer>
-      <mat-toolbar class="aran-layout-header">
-        <button class="bg-white rounded-full w-10 h-10 text-black flex items-center justify-center mr-5"
+      <mat-toolbar class="aran-layout__header">
+        <button class="aran-layout-bg-white aran-layout-rounded-full aran-layout-w-10 aran-layout-h-10 
+        aran-layout-text-black aran-layout-flex aran-layout-items-center aran-layout-justify-center aran-layout-mr-5"
         (click)="drawer.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
-        <span class="font-mono mr-3">{{appName}}</span>
+        <span class="aran-layout-font-mono aran-layout-mr-3">{{appName}}</span>
       </mat-toolbar>
 
       <ng-content select="[menu]"></ng-content>
     </mat-drawer>
 
     <mat-drawer-content>
-      <mat-toolbar class="aran-layout-header flex justify-between">
-        <div class="flex items-center">
-          <button class="bg-white rounded-full w-10 h-10 text-black flex items-center justify-center mr-5"
+      <mat-toolbar class="aran-layout__header aran-layout-flex aran-layout-justify-between">
+        <div class="aran-layout-flex aran-layout-items-center">
+          <button class="aran-layout-bg-white aran-layout-rounded-full aran-layout-w-10 aran-layout-h-10 
+          aran-layout-text-black aran-layout-flex aran-layout-items-center aran-layout-justify-center aran-layout-mr-5"
           (click)="drawer.toggle()">
             <mat-icon>menu</mat-icon>
           </button>
-          <span class="font-mono cursor-pointer">{{appName}}</span>
+          <span class="aran-layout-font-mono aran-layout-cursor-pointer">{{appName}}</span>
         </div>
 
         <mat-chip-set>
           <ng-content select="[header]"></ng-content>
           <mat-chip  [matMenuTriggerFor]="beforeMenu">
-            <div class="flex items-center justify-between cursor-pointer">
-              <span class="mr-3">Name Surname </span>
-              <mat-icon class="text-blue-500">person</mat-icon>
+            <div class="aran-layout-flex aran-layout-items-center aran-layout-justify-between aran-layout-cursor-pointer">
+              <span class="aran-layout-mr-3">Name Surname </span>
+              <mat-icon class="aran-layout-text-blue-500">person</mat-icon>
             </div>
           </mat-chip>
         </mat-chip-set>
-            
-        <mat-menu #beforeMenu="matMenu" xPosition="before" class="position top-2">
-          <button (click)="logout()" class="text-black text-sm px-8 py-3 flex items-center" >
-            <mat-icon class="mr-10">exit_to_app</mat-icon>
+
+        <mat-menu #beforeMenu="matMenu"  xPosition="before">
+          <ng-content select="[headerMenu]"></ng-content>
+          <button (click)="logout()" class="aran-layout-text-black aran-layout-text-sm aran-layout-px-8
+          aran-layout-py-3 aran-layout-flex aran-layout-items-center" >
+            <mat-icon class="aran-layout-mr-10">exit_to_app</mat-icon>
             <span>Logout</span>
           </button>
         </mat-menu>
-        <ng-content select="[headerMenu]"></ng-content>
+       
       </mat-toolbar>
         
-      <div class="min-h-router-outlet">
+      <div class="aran-layout-min-h-content">
         <ng-content></ng-content>
       </div>
 
-      <mat-toolbar class="aran-layout-footer flex items-center justify-between text-sm">
-        <span class="text-white font-semibold">© 1993 - 2023, R.I.S.K. Company - All rights reserved</span>
+      <mat-toolbar class="aran-layout__footer aran-layout-flex aran-layout-items-center
+       aran-layout-justify-between aran-layout-text-sm">
+        <span class="aran-layout-text-white aran-layout-font-semibold">
+          © 1993 - {{year}}, R.I.S.K. Company - All rights reserved
+        </span>
         <ng-content select="[footer]"></ng-content>
-        <div class="flex items-center">
-          <img src="../assets/risk_logo.png" alt="risk_logo" class="w-24">
-          <img src="../assets/panda_logo_small.png" alt="panda_logo" class="w-28 mr-3 ml-10">
+        <div class="aran-layout-flex aran-layout-items-center">
+          <img src="../assets/risk_logo.png" alt="risk_logo" class="aran-layout-w-24">
+          <img src="../assets/panda_logo_small.png" alt="panda_logo" class="aran-layout-w-28 aran-layout-mr-3 
+          aran-layout-ml-10">
         </div>
       </mat-toolbar>
     </mat-drawer-content>

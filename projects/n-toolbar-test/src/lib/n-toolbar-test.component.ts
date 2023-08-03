@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./n-toolbar-test.component.tailwind.css']
 })
 export class NToolbarTestComponent implements OnInit{
-  showFiller = false;
   @Input() appName: string;
   @Input() authCodeFlowConfig: AuthConfig;
+  year = new Date().getFullYear();
 
   constructor(
       private oauthService: OAuthService,
