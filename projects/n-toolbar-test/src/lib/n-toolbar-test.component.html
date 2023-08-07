@@ -1,64 +1,64 @@
 <mat-drawer-container class="aran-layout aran-layout-h-screen">
-    <mat-drawer #drawer>
-      <mat-toolbar class="aran-layout__header">
+  <mat-drawer #drawer>
+    <mat-toolbar class="aran-layout__header">
+      <button class="aran-layout-bg-white aran-layout-rounded-full aran-layout-w-10 aran-layout-h-10 
+      aran-layout-text-black aran-layout-flex aran-layout-items-center aran-layout-justify-center aran-layout-mr-5"
+      (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="aran-layout-font-mono aran-layout-mr-3">{{appName}}</span>
+    </mat-toolbar>
+
+    <ng-content select="[menu]"></ng-content>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <mat-toolbar class="aran-layout__header aran-layout-flex aran-layout-justify-between">
+      <div class="aran-layout-flex aran-layout-items-center">
         <button class="aran-layout-bg-white aran-layout-rounded-full aran-layout-w-10 aran-layout-h-10 
         aran-layout-text-black aran-layout-flex aran-layout-items-center aran-layout-justify-center aran-layout-mr-5"
         (click)="drawer.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
-        <span class="aran-layout-font-mono aran-layout-mr-3">{{appName}}</span>
-      </mat-toolbar>
-
-      <ng-content select="[menu]"></ng-content>
-    </mat-drawer>
-
-    <mat-drawer-content>
-      <mat-toolbar class="aran-layout__header aran-layout-flex aran-layout-justify-between">
-        <div class="aran-layout-flex aran-layout-items-center">
-          <button class="aran-layout-bg-white aran-layout-rounded-full aran-layout-w-10 aran-layout-h-10 
-          aran-layout-text-black aran-layout-flex aran-layout-items-center aran-layout-justify-center aran-layout-mr-5"
-          (click)="drawer.toggle()">
-            <mat-icon>menu</mat-icon>
-          </button>
-          <span class="aran-layout-font-mono aran-layout-cursor-pointer">{{appName}}</span>
-        </div>
-
-        <mat-chip-set>
-          <ng-content select="[header]"></ng-content>
-          <mat-chip  [matMenuTriggerFor]="beforeMenu">
-            <div class="aran-layout-flex aran-layout-items-center aran-layout-justify-between aran-layout-cursor-pointer">
-              <span class="aran-layout-mr-3">Name Surname </span>
-              <mat-icon class="aran-layout-text-blue-500">person</mat-icon>
-            </div>
-          </mat-chip>
-        </mat-chip-set>
-
-        <mat-menu #beforeMenu="matMenu"  xPosition="before">
-          <ng-content select="[headerMenu]"></ng-content>
-          <button (click)="logout()" class="aran-layout-text-black aran-layout-text-sm aran-layout-px-8
-          aran-layout-py-3 aran-layout-flex aran-layout-items-center" >
-            <mat-icon class="aran-layout-mr-10">exit_to_app</mat-icon>
-            <span>Logout</span>
-          </button>
-        </mat-menu>
-       
-      </mat-toolbar>
-        
-      <div class="aran-layout-min-h-content">
-        <ng-content></ng-content>
+        <span class="aran-layout-font-mono aran-layout-cursor-pointer">{{appName}}</span>
       </div>
 
-      <mat-toolbar class="aran-layout__footer aran-layout-flex aran-layout-items-center
-       aran-layout-justify-between aran-layout-text-sm">
-        <span class="aran-layout-text-white aran-layout-font-semibold">
-          © 1993 - {{year}}, R.I.S.K. Company - All rights reserved
-        </span>
-        <ng-content select="[footer]"></ng-content>
-        <div class="aran-layout-flex aran-layout-items-center">
-          <img src="../assets/risk_logo.png" alt="risk_logo" class="aran-layout-w-24">
-          <img src="../assets/panda_logo_small.png" alt="panda_logo" class="aran-layout-w-28 aran-layout-mr-3 
-          aran-layout-ml-10">
-        </div>
-      </mat-toolbar>
-    </mat-drawer-content>
-  </mat-drawer-container>
+      <mat-chip-set>
+        <ng-content select="[header]"></ng-content>
+        <mat-chip  [matMenuTriggerFor]="beforeMenu">
+          <div class="aran-layout-flex aran-layout-items-center aran-layout-justify-between aran-layout-cursor-pointer">
+            <span class="aran-layout-mr-3">Name Surname </span>
+            <mat-icon class="aran-layout-text-blue-500">person</mat-icon>
+          </div>
+        </mat-chip>
+      </mat-chip-set>
+
+      <mat-menu  #beforeMenu="matMenu" xPosition="before">
+        <ng-content select="[headerMenu]"></ng-content>
+        <button (click)="logout()" class="aran-layout-text-black aran-layout-text-sm aran-layout-px-8
+        aran-layout-py-3 aran-layout-flex aran-layout-items-center" >
+          <mat-icon class="aran-layout-mr-10">exit_to_app</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+     
+    </mat-toolbar>
+      
+    <div class="aran-layout-min-h-content">
+      <ng-content></ng-content>
+    </div>
+
+    <mat-toolbar class="aran-layout__footer aran-layout-flex aran-layout-items-center
+     aran-layout-justify-between aran-layout-text-sm">
+      <span class="aran-layout-text-white aran-layout-font-semibold">
+        © 1993 - {{year}}, R.I.S.K. Company - All rights reserved
+      </span>
+      <ng-content select="[footer]"></ng-content>
+      <div class="aran-layout-flex aran-layout-items-center">
+        <img src="../assets/risk_logo.png" alt="risk_logo" class="aran-layout-w-24">
+        <img src="../assets/panda_logo_small.png" alt="panda_logo" class="aran-layout-w-28 aran-layout-mr-3 
+        aran-layout-ml-10">
+      </div>
+    </mat-toolbar>
+  </mat-drawer-content>
+</mat-drawer-container>
