@@ -1,4 +1,4 @@
-<mat-drawer-container class="aran-layout aran-layout-h-screen">
+<mat-drawer-container class="aran-layout">
   <mat-drawer #drawer>
     <mat-toolbar class="aran-layout__header">
       <button class="aran-layout-bg-white aran-layout-rounded-full aran-layout-w-10 aran-layout-h-10 
@@ -27,15 +27,15 @@
         <ng-content select="[header]"></ng-content>
         <mat-chip  [matMenuTriggerFor]="beforeMenu">
           <div class="aran-layout-flex aran-layout-items-center aran-layout-justify-between aran-layout-cursor-pointer">
-            <span class="aran-layout-mr-3">Name Surname </span>
+            <span class="aran-layout-mr-3">{{headerMenuTitle}}</span>
             <mat-icon class="aran-layout-text-blue-500">person</mat-icon>
           </div>
         </mat-chip>
       </mat-chip-set>
 
-      <mat-menu  #beforeMenu="matMenu" xPosition="before">
+      <mat-menu #beforeMenu="matMenu" xPosition="before">
         <ng-content select="[headerMenu]"></ng-content>
-        <button (click)="logout()" class="aran-layout-text-black aran-layout-text-sm aran-layout-px-8
+        <button (click)="logout.emit()" class="aran-layout-text-black aran-layout-text-sm aran-layout-px-8
         aran-layout-py-3 aran-layout-flex aran-layout-items-center" >
           <mat-icon class="aran-layout-mr-10">exit_to_app</mat-icon>
           <span>Logout</span>
@@ -55,9 +55,9 @@
       </span>
       <ng-content select="[footer]"></ng-content>
       <div class="aran-layout-flex aran-layout-items-center">
-        <img src="../assets/risk_logo.png" alt="risk_logo" class="aran-layout-w-24">
-        <img src="../assets/panda_logo_small.png" alt="panda_logo" class="aran-layout-w-28 aran-layout-mr-3 
-        aran-layout-ml-10">
+        <div class="aran-layout-bg-risk_logo aran-layout-bg-cover aran-layout-bg-center aran-layout-w-24 aran-layout-h-6"></div>
+        <div class="aran-layout-bg-panda_logo aran-layout-bg-cover aran-layout-bg-center aran-layout-w-28 aran-layout-h-6 
+        aran-layout-mr-3 aran-layout-ml-10"></div>
       </div>
     </mat-toolbar>
   </mat-drawer-content>

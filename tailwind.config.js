@@ -2,10 +2,14 @@
 module.exports = {
   prefix: 'aran-layout-',
   content: [
-    "./projects/n-toolbar-test/src/**/*.html"
+    "./src/**/*.html"
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'risk_logo': "url('../assets/risk_logo.png')",
+        'panda_logo': "url('../assets/panda_logo_small.png')"
+      },
       minHeight: {
         'content': 'calc(100vh - 128px)'
       }
